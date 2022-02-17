@@ -1,1 +1,4 @@
-# docker-mysql-example
+Run with:
+``` SHELL
+./start.sh
+```
