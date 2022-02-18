@@ -1,9 +1,15 @@
 version: "3"
+networks:
+  mysql:
+    external:
+      name: mysql
 services:
   mysql:
     image: 'mysql:latest'
     ports:
       - '3306:3306'
+    networks:
+      - mysql
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - SERVICE_NAME=mysql
