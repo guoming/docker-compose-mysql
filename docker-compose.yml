@@ -6,6 +6,11 @@ networks:
 services:
   mysql:
     image: 'mysql:latest'
+    deploy:
+     resources:
+        limits:
+          cpus: '0.1'
+          memory: "256M" 
     ports:
       - '3306:3306'
     networks:
