@@ -1,6 +1,7 @@
 networks:
   mysql:
-    external: true
+    driver: bridge
+
 services:
     mysql:
       image: 'mysql:8.0.20'
