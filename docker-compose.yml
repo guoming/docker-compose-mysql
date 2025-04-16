@@ -1,22 +1,21 @@
-version: "3"
 networks:
   mysql:
-    external:
-      name: mysql
+    external: true
 services:
-  mysql:
-    image: 'mysql:latest'
-    deploy:
-     resources:
-        limits:
-          cpus: '0.2'
-          memory: "512M" 
-    ports:
-      - '3306:3306'
-    networks:
-      - mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=123456
-      - SERVICE_NAME=mysql
-      - SERVICE_TAGS=db,mysql
-      - SERVICE_REGION=DC1
+    mysql:
+      image: 'mysql:8.0.20'
+      deploy:
+        resources:
+          limits:
+            cpus: '0.2'
+            memory: "512M"
+      ports:
+        - '3306:3306'
+      environment:
+        - MYSQL_ROOT_PASSWORD=123456
+      volumes:
+        - ./mysql/data:/var/lib/mysql
+        - ./mysql/conf:/etc/mysql/conf.d
+        - ./mysql/my.cnf:/etc/mysql/my.cnf
+      networks:
+        - mysql
